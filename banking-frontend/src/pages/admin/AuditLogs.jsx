@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 export default function AuditLogs() {
     const navigate = useNavigate();
     
-    // Mock Data for "Professional" Look
     const logs = [
         { id: 101, action: 'User Login', user: 'admin@banking.com', ip: '192.168.1.1', time: '10 mins ago', status: 'Success' },
         { id: 102, action: 'Update Profile', user: 'fresh@test.com', ip: '45.12.33.1', time: '1 hour ago', status: 'Success' },

@@ -5,22 +5,21 @@ import { useNavigate } from 'react-router-dom';
 
 export default function ForgotPassword() {
     const navigate = useNavigate();
-    const [step, setStep] = useState(1); // Step 1: Email, Step 2: New Password
+    const [step, setStep] = useState(1);
     const [loading, setLoading] = useState(false);
     
     const [email, setEmail] = useState('');
     const [otp, setOtp] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
-    // STEP 1: Request Reset
+    
     const handleRequestReset = async (e) => {
         e.preventDefault();
         setLoading(true);
         
-        // Simulation for Demo (or connect to real backend)
+        
         try {
-            // await api.post('/auth/forgot-password', { email }); 
-            // ^ Uncomment above if backend is ready. For now, we simulate success:
+           
             
             setTimeout(() => {
                 setLoading(false);
@@ -33,13 +32,12 @@ export default function ForgotPassword() {
         }
     };
 
-    // STEP 2: Confirm Reset
     const handleResetConfirm = async (e) => {
         e.preventDefault();
         setLoading(true);
 
         try {
-            // await api.post('/auth/reset-password', { email, otp, newPassword });
+        
             
             setTimeout(() => {
                 setLoading(false);
@@ -58,7 +56,7 @@ export default function ForgotPassword() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-slate-900 relative overflow-hidden font-sans">
             
-            {/* Background Decorations */}
+            {/*---------------*/}
             <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-indigo-900/30 rounded-full blur-[100px]"></div>
             <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-900/20 rounded-full blur-[100px]"></div>
 
@@ -79,7 +77,7 @@ export default function ForgotPassword() {
                 </div>
 
                 {step === 1 ? (
-                    // --- STEP 1 FORM: EMAIL ---
+                    
                     <form onSubmit={handleRequestReset} className="space-y-6">
                         <div className="space-y-2">
                             <label className="text-xs font-bold text-slate-500 uppercase ml-1">Registered Email</label>
@@ -99,7 +97,7 @@ export default function ForgotPassword() {
                         </button>
                     </form>
                 ) : (
-                    // --- STEP 2 FORM: CODE + NEW PASSWORD ---
+                   
                     <form onSubmit={handleResetConfirm} className="space-y-4">
                          <div className="p-3 bg-blue-50 text-blue-800 text-sm rounded-lg mb-4 text-center border border-blue-100">
                             Code sent to <strong>{email}</strong>

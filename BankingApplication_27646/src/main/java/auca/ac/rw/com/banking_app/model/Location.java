@@ -19,18 +19,16 @@ public class Location {
     private Long id;
 
     private String name;
-    private String code; // e.g., "KGL"
+    private String code;
 
     @Enumerated(EnumType.STRING)
-    private ELocation type; // Province, District, etc.
+    private ELocation type;
 
-    // PARENT: The location above this one (e.g., Gasabo -> Kigali)
     @ManyToOne
     @JoinColumn(name = "parent_id")
-    @JsonIgnore // Stops infinite loops when fetching data
+    @JsonIgnore
     private Location parent;
 
-    // CHILDREN: The locations below this one (e.g., Kigali -> Gasabo, Kicukiro)
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
     private List<Location> children = new ArrayList<>();
 }

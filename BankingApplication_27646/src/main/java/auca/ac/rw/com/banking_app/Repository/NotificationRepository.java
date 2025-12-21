@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface NotificationRepository extends JpaRepository<Notification, Long> {
-    // You can add custom finders here if needed, but standard CRUD is enough for now.
+
 }

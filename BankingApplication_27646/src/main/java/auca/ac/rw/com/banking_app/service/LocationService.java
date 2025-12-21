@@ -11,21 +11,17 @@ public class LocationService {
 
     @Autowired
     private LocationRepository locationRepository;
-
-    // This method builds the tree: Province -> District -> Sector -> Cell -> Village
     public void createRwandaStructure() {
         if (locationRepository.existsByName("Kigali City")) {
-            return; // Data already exists, don't create it again
+            return;
         }
 
-        // 1. Create Province
         Location province = new Location();
         province.setName("Kigali City");
         province.setCode("KGL");
         province.setType(ELocation.PROVINCE);
         locationRepository.save(province);
 
-        // 2. Create District (Parent = Province)
         Location district = new Location();
         district.setName("Gasabo");
         district.setCode("GAS");
@@ -33,7 +29,6 @@ public class LocationService {
         district.setParent(province);
         locationRepository.save(district);
 
-        // 3. Create Sector (Parent = District)
         Location sector = new Location();
         sector.setName("Kacyiru");
         sector.setCode("KAC");
@@ -41,7 +36,6 @@ public class LocationService {
         sector.setParent(district);
         locationRepository.save(sector);
 
-        // 4. Create Cell (Parent = Sector)
         Location cell = new Location();
         cell.setName("Kamatamu");
         cell.setCode("KAM");
@@ -49,7 +43,6 @@ public class LocationService {
         cell.setParent(sector);
         locationRepository.save(cell);
 
-        // 5. Create Village (Parent = Cell)
         Location village = new Location();
         village.setName("Amahoro Village");
         village.setCode("AMA");

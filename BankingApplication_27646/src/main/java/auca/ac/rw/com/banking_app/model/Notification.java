@@ -20,7 +20,6 @@ public class Notification {
     private String message;
     private String dateSent;
 
-    // Linking back to Users (Many Notifications -> Many Users)
     @ManyToMany(mappedBy = "notifications")
     @JsonIgnore
     private List<User> users;

@@ -30,16 +30,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors(org.springframework.security.config.Customizer.withDefaults()) // Keep CORS enabled
+                .cors(org.springframework.security.config.Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        // 1. Allow Login & Register
                         .requestMatchers("/api/auth/**").permitAll()
-
-                        // 2. Allow Location Generation
                         .requestMatchers("/api/locations/**").permitAll()
-
-                        // 3. Lock everything else
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

@@ -38,14 +38,13 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                     userEmail = jwtUtils.extractUsername(jwtToken);
                 } catch (Exception e) {
                     System.out.println("Error extracting token (Expired or Invalid): " + e.getMessage());
-                    // Don't crash! Just let the user continue as "Unauthenticated"
+
                 }
             }
 
             if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
 
-                // Add a check to ensure token is valid before setting auth
                 if (jwtUtils.validateToken(jwtToken, userDetails)) {
                     UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                             userDetails, null, userDetails.getAuthorities());

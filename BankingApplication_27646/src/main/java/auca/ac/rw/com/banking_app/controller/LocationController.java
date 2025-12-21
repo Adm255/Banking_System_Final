@@ -14,8 +14,6 @@ public class LocationController {
     @Autowired
     private LocationService locationService;
 
-    // POST http://localhost:8080/api/locations/generate
-    // RUN THIS FIRST! It creates the Province, District, Sector, etc.
     @PostMapping("/generate")
     public ResponseEntity<String> generateRwandaStructure() {
         locationService.createRwandaStructure();

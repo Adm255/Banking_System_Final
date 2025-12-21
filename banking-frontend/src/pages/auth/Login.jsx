@@ -7,11 +7,9 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     
-    // Get the type (admin/customer) passed from the Welcome screen. Default to customer.
     const loginType = location.state?.type || 'customer';
     const isAdmin = loginType === 'admin';
 
-    // Theme Config (Blue for Customer, Red for Admin)
     const theme = {
         bg: isAdmin ? 'from-slate-900 via-red-950 to-slate-900' : 'from-slate-900 via-blue-950 to-slate-900',
         accent: isAdmin ? 'text-red-500' : 'text-blue-500',
@@ -43,8 +41,8 @@ const Login = () => {
         try {
             const res = await api.post('/auth/verify-2fa', { email, code });
             
-            // SECURITY CHECK: Did a user try to log in to the Admin portal?
-            const role = res.data.role; // 'ADMIN' or 'USER'
+            
+            const role = res.data.role; 
             
             if (isAdmin && role !== 'ADMIN') {
                 setError("Access Denied: You are not an Administrator.");
@@ -120,7 +118,7 @@ const Login = () => {
                             </button>
                         </form>
 
-                        {/* --- NEW REGISTRATION LINK --- */}
+                        {/* ---  --- */}
                         {!isAdmin && (
                             <div className="mt-6 text-center pt-4 border-t border-gray-100">
                                 <p className="text-gray-500 text-sm">

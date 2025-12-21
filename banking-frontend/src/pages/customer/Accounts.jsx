@@ -51,7 +51,7 @@ export default function Accounts() {
                     {accounts.length > 0 ? (
                         accounts.map(acc => (
                             <div key={acc.id} className="relative overflow-hidden bg-slate-900 text-white p-6 rounded-2xl shadow-xl transition transform hover:-translate-y-1">
-                                {/* Decorative Circles */}
+                                {/*----------*/}
                                 <div className="absolute -right-10 -top-10 w-40 h-40 bg-white/5 rounded-full blur-2xl"></div>
                                 <div className="absolute -left-10 -bottom-10 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl"></div>
 

@@ -12,15 +12,11 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-
-    // 1. SECURITY: Needed for Login
     User findByEmail(String email);
 
-    // 2. MIDTERM REQUIREMENT (This was missing and causing the error!)
     @Query("SELECT u FROM User u WHERE u.location.parent.parent.parent.parent.name = :provinceName")
     List<User> findUsersByProvinceName(@Param("provinceName") String provinceName);
 
-    // 3. FINAL REQUIREMENT: Global Search
     @Query("SELECT u FROM User u WHERE " +
             "LOWER(u.firstName) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
             "LOWER(u.lastName) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +

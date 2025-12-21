@@ -9,7 +9,7 @@ export default function Transfer() {
     const [accounts, setAccounts] = useState([]);
     const [loading, setLoading] = useState(false);
     
-    // Form State
+    
     const [sourceAccountId, setSourceAccountId] = useState('');
     const [targetAccountId, setTargetAccountId] = useState('');
     const [amount, setAmount] = useState('');
@@ -41,14 +41,14 @@ export default function Transfer() {
         try {
             await api.post(`/accounts/transfer?fromId=${sourceAccountId}&toId=${targetAccountId}&amount=${amount}`);
             
-            // Success Animation/Toast
+            
             toast.success(`Successfully sent $${amount}`, {
                 style: { background: '#1e293b', color: '#fff' },
                 icon: '💸',
                 duration: 3000
             });
             
-            // Delay to let them see the success state
+        
             setTimeout(() => navigate('/customer/dashboard'), 2000);
         } catch (err) {
             toast.error(err.response?.data?.message || "Transfer Failed. Check balance.");
@@ -61,7 +61,7 @@ export default function Transfer() {
         <div className="max-w-xl mx-auto mt-10">
             <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 relative overflow-hidden">
                 
-                {/* Decoration Background */}
+                {/* ------------------- */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl -mr-16 -mt-16 opacity-50 pointer-events-none"></div>
 
                 <div className="relative z-10">
@@ -71,7 +71,7 @@ export default function Transfer() {
 
                     <form onSubmit={handleTransfer} className="space-y-6">
                         
-                        {/* 1. FROM ACCOUNT */}
+                        {/* ------------- */}
                         <div>
                             <label className="block text-xs font-bold text-gray-500 uppercase mb-2">From Account</label>
                             <div className="relative">
@@ -90,7 +90,7 @@ export default function Transfer() {
                             </div>
                         </div>
 
-                        {/* 2. TO ACCOUNT (Target) */}
+                        {/* ------------ */}
                         <div>
                             <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Recipient Account ID</label>
                             <div className="relative">
@@ -108,7 +108,7 @@ export default function Transfer() {
                             </div>
                         </div>
 
-                        {/* 3. BIG AMOUNT INPUT */}
+                        {/* --------------- */}
                         <div>
                             <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Amount</label>
                             <div className="relative">
@@ -125,7 +125,7 @@ export default function Transfer() {
                             </div>
                         </div>
 
-                        {/* 4. SEND BUTTON */}
+                        {/* ---------- */}
                         <button 
                             disabled={loading || !amount || !targetAccountId}
                             className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/30 disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2"
@@ -138,7 +138,7 @@ export default function Transfer() {
                 </div>
             </div>
 
-            {/* Security Note */}
+            {/* ------------ */}
             <p className="text-center text-gray-400 text-xs mt-6 flex items-center justify-center gap-1">
                 <CheckCircle size={12} /> Secure 256-bit Encrypted Transaction
             </p>

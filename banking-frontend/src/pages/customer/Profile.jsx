@@ -2,7 +2,6 @@ import { Mail, MapPin, Phone, Shield, User } from 'lucide-react';
 import CustomerLayout from '../../layouts/CustomerLayout';
 
 export default function Profile() {
-    // Mock data for the demo
     const userProfile = {
         name: "Fresh User",
         email: "fresh@test.com",
@@ -20,18 +19,18 @@ export default function Profile() {
             </header>
 
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden max-w-3xl">
-                {/* Banner */}
+                {/*---------*/}
                 <div className="h-32 bg-gradient-to-r from-blue-600 to-indigo-700"></div>
                 
                 <div className="px-8 pb-8 relative">
-                    {/* Avatar */}
+                    {/*-------*/}
                     <div className="w-24 h-24 bg-white rounded-full p-1 absolute -top-12 shadow-md">
                         <div className="w-full h-full bg-slate-200 rounded-full flex items-center justify-center text-3xl font-bold text-slate-500">
                             {userProfile.name.charAt(0)}
                         </div>
                     </div>
 
-                    {/* Header Info */}
+                    {/* ----------- */}
                     <div className="mt-14 mb-6">
                         <h3 className="text-2xl font-bold text-gray-800">{userProfile.name}</h3>
                         <p className="text-gray-500 flex items-center gap-2 mt-1">
@@ -40,7 +39,7 @@ export default function Profile() {
                         </p>
                     </div>
 
-                    {/* Details Grid */}
+                    {/* ------------ */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-gray-100">
                         <div className="flex items-start gap-4">
                             <div className="p-3 bg-blue-50 text-blue-600 rounded-lg">

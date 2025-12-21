@@ -20,7 +20,6 @@ public class Card {
     private String expirationDate;
     private String cvv;
 
-    // Linking back to Account
     @OneToOne
     @JoinColumn(name = "account_id")
     @JsonIgnore

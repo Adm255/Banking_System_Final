@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Github, Globe, Linkedin, ShieldCheck, Wallet } from 'lucide-react'; // <--- Added Icons
+import { ArrowRight, Github, Globe, Linkedin, ShieldCheck, Wallet } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Welcome() {
@@ -17,7 +17,7 @@ export default function Welcome() {
     return (
         <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center p-4 relative overflow-hidden font-sans">
             
-            {/* 1. Animated Background Glow */}
+            
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
                 <motion.div 
                     animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
@@ -31,7 +31,7 @@ export default function Welcome() {
                 ></motion.div>
             </div>
 
-            {/* 2. Main Content */}
+            {/* ------------- */}
             <div className="z-10 text-center mb-16 max-w-2xl">
                 <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
                     <h1 className="text-6xl font-extrabold text-white mb-6 tracking-tight leading-tight">
@@ -43,10 +43,10 @@ export default function Welcome() {
                 </motion.div>
             </div>
 
-            {/* 3. The Interactive Cards */}
+            {/* -------------- */}
             <div className="z-10 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full px-4 mb-12">
                 
-                {/* Customer Card */}
+                {/*-------------*/}
                 <motion.div 
                     whileHover={{ scale: 1.03, y: -5 }}
                     whileTap={{ scale: 0.98 }}
@@ -68,7 +68,7 @@ export default function Welcome() {
                     </div>
                 </motion.div>
 
-                {/* Admin Card */}
+                {/* --------- */}
                 <motion.div 
                     whileHover={{ scale: 1.03, y: -5 }}
                     whileTap={{ scale: 0.98 }}
@@ -92,7 +92,7 @@ export default function Welcome() {
 
             </div>
 
-            {/* 4. NEW SOCIAL FOOTER */}
+            {/* ----------- */}
             <motion.div 
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 

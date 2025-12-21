@@ -13,7 +13,7 @@ public class CardController {
     @Autowired
     private CardService cardService;
 
-    // POST http://localhost:3000/api/cards?accountId=1
+
     @PostMapping
     public ResponseEntity<Card> createCard(@RequestBody Card card, @RequestParam Long accountId) {
         return ResponseEntity.ok(cardService.createCard(accountId, card));

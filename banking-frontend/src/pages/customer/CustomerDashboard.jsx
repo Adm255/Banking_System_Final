@@ -25,18 +25,16 @@ export default function CustomerDashboard() {
             try {
                 const userId = localStorage.getItem('userId');
                 
-                // 1. Fetch User Name
                 const userRes = await api.get(`/users/${userId}`);
                 setUser(userRes.data);
 
-                // 2. Fetch Accounts
                 const accRes = await api.get(`/accounts/user/${userId}`);
                 setAccounts(accRes.data);
 
-                // 3. Fetch Recent Transactions (Mocking it via the first account for now)
+                
                 if (accRes.data.length > 0) {
                     const transRes = await api.get(`/transactions/account/${accRes.data[0].id}`);
-                    setTransactions(transRes.data.slice(0, 5)); // Only show top 5
+                    setTransactions(transRes.data.slice(0, 5)); 
                 }
             } catch (err) {
                 console.error("Dashboard Load Error", err);
@@ -47,13 +45,13 @@ export default function CustomerDashboard() {
         fetchData();
     }, []);
 
-    // Helper to format currency
+    
     const fmt = (amount) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
 
     return (
         <div className="p-6 max-w-7xl mx-auto space-y-8">
             
-            {/* --- HEADER --- */}
+            {/* ------ */}
             <div className="flex justify-between items-end">
                 <div>
                     <h1 className="text-2xl font-bold text-gray-900">Welcome back, {user.firstName}</h1>
@@ -69,11 +67,11 @@ export default function CustomerDashboard() {
                 </div>
             </div>
 
-            {/* --- 1. ACCOUNT CARDS (The "Chic" Cards) --- */}
+            {/* ------ */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {accounts.length > 0 ? accounts.map((acc, index) => (
                     <div key={acc.id} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden group">
-                        {/* Decorative Gradient Blob */}
+                        {/* ------  */}
                         <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${index % 2 === 0 ? 'from-blue-50 to-indigo-50' : 'from-green-50 to-emerald-50'} rounded-bl-full -mr-10 -mt-10 opacity-50`}></div>
                         
                         <div className="flex justify-between items-start mb-4 relative z-10">
@@ -97,7 +95,7 @@ export default function CustomerDashboard() {
                 )}
             </div>
 
-            {/* --- 2. QUICK ACTIONS (The "Chic" Bar) --- */}
+            {/* ------ */}
             <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex justify-around md:justify-start md:gap-12 items-center">
                 <button onClick={() => navigate('/customer/transfer')} className="flex flex-col items-center gap-2 group cursor-pointer">
                     <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all">
@@ -121,9 +119,9 @@ export default function CustomerDashboard() {
                 </button>
             </div>
 
-            {/* --- 3. RECENT TRANSACTIONS (The Clean List) --- */}
+            {/* ------ */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Left: Transactions */}
+                {/* ------- */}
                 <div className="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                     <div className="flex justify-between items-center mb-6">
                         <h3 className="font-bold text-gray-800 text-lg">Recent Activity</h3>
@@ -160,7 +158,7 @@ export default function CustomerDashboard() {
                     </div>
                 </div>
 
-                {/* Right: Notifications / Ads */}
+                {/* ------*/}
                 <div className="bg-slate-900 p-6 rounded-2xl shadow-lg text-white flex flex-col justify-between relative overflow-hidden">
                     <div className="relative z-10">
                         <div className="bg-white/20 w-12 h-12 rounded-xl flex items-center justify-center mb-4 backdrop-blur-sm">
@@ -175,7 +173,7 @@ export default function CustomerDashboard() {
                         </button>
                     </div>
                     
-                    {/* Background Circles Decoration */}
+                    {/*-------- */}
                     <div className="absolute top-[-50px] right-[-50px] w-40 h-40 bg-blue-500 rounded-full blur-[80px] opacity-50"></div>
                     <div className="absolute bottom-[-20px] left-[-20px] w-32 h-32 bg-purple-500 rounded-full blur-[60px] opacity-40"></div>
                 </div>

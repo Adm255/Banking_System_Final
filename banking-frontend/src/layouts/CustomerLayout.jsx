@@ -22,7 +22,7 @@ const CustomerLayout = ({ children }) => {
                 </div>
                 
                 <nav className="flex-1 p-4 space-y-2">
-                    {/* 1. Dashboard */}
+                   
                     <Link to="/customer/dashboard">
                         <button className={`flex items-center gap-3 w-full p-3 rounded-lg transition-all ${
                             isActive('/customer/dashboard') 
@@ -33,7 +33,7 @@ const CustomerLayout = ({ children }) => {
                         </button>
                     </Link>
 
-                    {/* 2. My Accounts (Added this!) */}
+                    
                     <Link to="/customer/accounts">
                         <button className={`flex items-center gap-3 w-full p-3 rounded-lg transition-all ${
                             isActive('/customer/accounts') 
@@ -44,7 +44,7 @@ const CustomerLayout = ({ children }) => {
                         </button>
                     </Link>
 
-                    {/* 3. Open Account */}
+                
                     <Link to="/customer/create-account">
                         <button className={`flex items-center gap-3 w-full p-3 rounded-lg transition-all ${
                             isActive('/customer/create-account') 
@@ -55,7 +55,7 @@ const CustomerLayout = ({ children }) => {
                         </button>
                     </Link>
 
-                    {/* 4. Transfer Money */}
+                   
                     <Link to="/customer/transfer">
                         <button className={`flex items-center gap-3 w-full p-3 rounded-lg transition-all ${
                             isActive('/customer/transfer') 
@@ -66,7 +66,7 @@ const CustomerLayout = ({ children }) => {
                         </button>
                     </Link>
 
-                    {/* 5. Transactions */}
+                    
                     <Link to="/customer/transactions">
                         <button className={`flex items-center gap-3 w-full p-3 rounded-lg transition-all ${
                             isActive('/customer/transactions') 
@@ -77,7 +77,7 @@ const CustomerLayout = ({ children }) => {
                         </button>
                     </Link>
 
-                    {/* 6. Profile */}
+                    
                     <Link to="/customer/profile">
                         <button className={`flex items-center gap-3 w-full p-3 rounded-lg transition-all ${
                             isActive('/customer/profile') 

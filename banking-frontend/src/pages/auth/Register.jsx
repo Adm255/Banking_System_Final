@@ -4,7 +4,6 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api/axios';
 
-// --- SHARED LOCATION CONFIG (Consensus) ---
 const REGIONAL_HIERARCHY = {
     'KIGALI': { label: 'Kigali City', districts: [{ id: 1, name: 'Gasabo' }, { id: 2, name: 'Kicukiro' }, { id: 3, name: 'Nyarugenge' }] },
     'NORTH':  { label: 'Northern Prov', districts: [{ id: 4, name: 'Musanze' }, { id: 5, name: 'Burera' }, { id: 6, name: 'Gicumbi' }] },
@@ -33,7 +32,7 @@ export default function Register() {
         }
 
         try {
-            await api.post('/auth/register', formData); // Ensure your backend has this endpoint
+            await api.post('/auth/register', formData);
             toast.success("Account Created! Please Login.");
             setTimeout(() => navigate('/login'), 2000);
         } catch (err) {
@@ -96,7 +95,7 @@ export default function Register() {
                         />
                     </div>
 
-                    {/* --- LOCATION REQUIREMENT (PROVINCE -> DISTRICT) --- */}
+                    {/* --- LOCATION --- */}
                     <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-xl space-y-3">
                         <h3 className="text-xs font-bold text-blue-400 uppercase flex items-center gap-2">
                             <MapPin size={14} /> Location Verification
@@ -107,7 +106,7 @@ export default function Register() {
                             className="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-lg text-sm text-white focus:border-blue-500 outline-none cursor-pointer"
                             onChange={(e) => {
                                 setParentRegion(e.target.value);
-                                setFormData({ ...formData, location: null }); // Reset child
+                                setFormData({ ...formData, location: null });
                             }}
                         >
                             <option value="">-- Select Province --</option>

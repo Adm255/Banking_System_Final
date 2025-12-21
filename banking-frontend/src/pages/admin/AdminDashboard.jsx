@@ -4,7 +4,6 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api/axios';
 
-// --- CONFIGURATION: MUST MATCH EditUser.jsx EXACTLY ---
 const REGIONAL_HIERARCHY = {
     'KIGALI': {
         label: 'Kigali City',
@@ -46,7 +45,6 @@ const REGIONAL_HIERARCHY = {
     }
 };
 
-// --- HELPER 1: CONVERT ID TO DISPLAY COMPONENT (For Table) ---
 const getLocationDisplay = (locationObj) => {
     if (!locationObj || !locationObj.id) return <span className="text-gray-300 italic">Not Assigned</span>;
     
@@ -66,14 +64,13 @@ const getLocationDisplay = (locationObj) => {
     return <span className="text-gray-400">Unknown ID: {locId}</span>;
 };
 
-// --- HELPER 2: CONVERT ID TO STRING (For Search) ---
 const getLocationString = (locationObj) => {
     if (!locationObj || !locationObj.id) return "";
     const locId = locationObj.id;
     for (const [provKey, data] of Object.entries(REGIONAL_HIERARCHY)) {
         const foundDist = data.districts.find(d => d.id === locId);
         if (foundDist) {
-            return `${foundDist.name} ${data.label}`; // e.g., "Gasabo District Kigali City"
+            return `${foundDist.name} ${data.label}`;
         }
     }
     return "";
@@ -85,7 +82,7 @@ export default function AdminDashboard() {
     const [users, setUsers] = useState([]);
     const [search, setSearch] = useState('');
     
-    // Pagination
+
     const [currentPage, setCurrentPage] = useState(1);
     const usersPerPage = 5;
 
@@ -95,15 +92,14 @@ export default function AdminDashboard() {
 
     const loadData = async () => {
         try {
-            // 1. Fetch Stats
+           
             try {
                 const dashRes = await api.get('/dashboard/stats');
                 setStats(dashRes.data);
             } catch (e) {
-                setStats({ clients: 4, accounts: 1, reserves: 10000 }); // Fallback
+                setStats({ clients: 4, accounts: 1, reserves: 10000 });
             }
 
-            // 2. Fetch Users
             const userRes = await api.get('/users');
             setUsers(userRes.data);
         } catch (err) {
@@ -127,8 +123,6 @@ export default function AdminDashboard() {
         navigate('/login');
     };
 
-    // --- FILTER LOGIC (Requirement #7 & #8) ---
-    // Searches: Name, Email, Role, ID, and Location Text
     const filteredUsers = users.filter(u => {
         const term = search.toLowerCase();
         const locationText = getLocationString(u.location).toLowerCase(); 
@@ -143,7 +137,7 @@ export default function AdminDashboard() {
         );
     });
 
-    // Pagination Logic
+    
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
     const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
@@ -152,7 +146,7 @@ export default function AdminDashboard() {
     return (
         <div className="flex min-h-screen bg-gray-50 font-sans">
             
-            {/* SIDEBAR */}
+            
             <div className="w-64 bg-slate-900 text-white flex flex-col p-6 fixed h-full shadow-2xl z-20">
                 <div className="flex items-center gap-3 mb-10">
                     <Shield className="text-blue-500" size={32} />
@@ -167,7 +161,7 @@ export default function AdminDashboard() {
                         <Users size={18} /> User Database
                     </button>
                     
-                    {/* FUNCTIONAL LINKS TO EXTRA PAGES */}
+                
                     <button onClick={() => navigate('/admin/reserves')} className="w-full flex items-center gap-3 text-slate-400 p-3 hover:text-white hover:bg-slate-800 rounded-xl transition font-medium">
                         <DollarSign size={18} /> Bank Reserves
                     </button>
@@ -184,10 +178,10 @@ export default function AdminDashboard() {
                 </button>
             </div>
 
-            {/* MAIN CONTENT Area */}
+            {/*---------------------*/}
             <div className="flex-1 ml-64 p-8">
                 
-                {/* Header Section */}
+                {/*----------------------*/}
                 <div className="flex justify-between items-center mb-8 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                     <div>
                         <h2 className="text-2xl font-bold text-gray-800">System Overview</h2>
@@ -199,7 +193,7 @@ export default function AdminDashboard() {
                     </div>
                 </div>
 
-                {/* Dashboard Metrics */}
+                {/*---------------*/}
                 <div className="grid grid-cols-3 gap-6 mb-8">
                     <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between hover:shadow-md transition">
                         <div>
@@ -224,10 +218,10 @@ export default function AdminDashboard() {
                     </div>
                 </div>
 
-                {/* Database Table */}
+                
                 <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden min-h-[600px] flex flex-col">
                     
-                    {/* Toolbar */}
+                    
                     <div className="p-8 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
                         <div>
                             <h3 className="text-xl font-bold text-gray-900">Client Database</h3>
@@ -245,7 +239,7 @@ export default function AdminDashboard() {
                         </div>
                     </div>
 
-                    {/* Table */}
+                    
                     <div className="flex-1 overflow-x-auto">
                         <table className="w-full">
                             <thead className="bg-gray-50">
@@ -300,7 +294,7 @@ export default function AdminDashboard() {
                         </table>
                     </div>
 
-                    {/* Pagination */}
+                    {/*------ Pagination -------*/}
                     <div className="p-6 border-t border-gray-100 flex justify-between items-center bg-gray-50/50">
                         <span className="text-xs font-medium text-gray-500">
                             Showing page <span className="text-gray-900 font-bold">{currentPage}</span> of {totalPages || 1}

@@ -24,11 +24,8 @@ public class NotificationService {
         notification.setMessage(message);
         notification.setDateSent(java.time.LocalDate.now().toString());
 
-        // Add the user to the notification's list (The Join Table magic happens here)
         notification.setUsers(java.util.List.of(user));
 
-        // Note: In a real N:M, you'd usually look up an existing Notification and add a user to it,
-        // but for this midterm, creating a new one linked to a user is sufficient proof.
         return notificationRepository.save(notification);
     }
 }

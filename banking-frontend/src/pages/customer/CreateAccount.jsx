@@ -2,7 +2,6 @@ import { CreditCard, PlusCircle, ShieldCheck } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api/axios';
-// IMPORT LAYOUT
 import CustomerLayout from '../../layouts/CustomerLayout';
 
 export default function CreateAccount() {
@@ -33,7 +32,7 @@ export default function CreateAccount() {
     };
 
     return (
-        // WRAP IN LAYOUT
+        
         <CustomerLayout>
             <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mt-10">
                 <header className="text-center mb-8">
@@ -45,7 +44,7 @@ export default function CreateAccount() {
                 </header>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* ... (Keep form content the same) ... */}
+                    {/* ...... */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">Account Type</label>
                         <div className="relative">

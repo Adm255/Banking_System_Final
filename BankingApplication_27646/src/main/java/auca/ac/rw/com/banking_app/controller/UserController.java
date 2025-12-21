@@ -16,40 +16,34 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // POST Create User
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user, @RequestParam Long locationId) {
         User savedUser = userService.createUser(user, locationId);
         return ResponseEntity.ok(savedUser);
     }
 
-    // GET By Province (Midterm Requirement)
     @GetMapping("/by-province")
     public ResponseEntity<List<User>> getUsersByProvince(@RequestParam String name) {
         List<User> users = userService.getUsersByProvince(name);
         return ResponseEntity.ok(users);
     }
 
-    // GET All Users
     @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    // DELETE User
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.ok("User deleted successfully");
     }
 
-    // PUT Update User
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
         return ResponseEntity.ok(userService.updateUser(id, user));
     }
 
-    // GET One User (The fix is here: we use userService now)
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         User user = userService.getUserById(id);
@@ -59,7 +53,6 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    // GET Global Search
     @GetMapping("/search")
     public ResponseEntity<Page<User>> searchUsers(
             @RequestParam(defaultValue = "") String keyword,

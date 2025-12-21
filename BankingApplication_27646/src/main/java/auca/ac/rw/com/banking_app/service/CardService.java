@@ -20,7 +20,6 @@ public class CardService {
         Account account = accountRepository.findById(accountId)
                 .orElseThrow(() -> new RuntimeException("Account not found"));
 
-        // Strict 1:1 Check: Does this account already have a card?
         if (account.getCard() != null) {
             throw new RuntimeException("This account already has a card! One-to-One relationship violation.");
         }

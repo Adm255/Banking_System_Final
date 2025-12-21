@@ -30,7 +30,7 @@ public class DashboardController {
         // Calculate total money in the bank
         List<Account> accounts = accountRepository.findAll();
         double totalBalance = accounts.stream()
-                .mapToDouble(Account::getBalance) // Assuming balance is Double
+                .mapToDouble(Account::getBalance)
                 .sum();
 
         return ResponseEntity.ok(new DashboardResponse(totalUsers, totalAccounts, totalBalance));

@@ -11,7 +11,7 @@ export default function BankReserves() {
             </button>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Visual Chart Mockup */}
+                
                 <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
                     <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                         <DollarSign className="text-green-600"/> Liquidity Status
@@ -39,7 +39,7 @@ export default function BankReserves() {
                     </div>
                 </div>
 
-                {/* KPI Card */}
+                {/*--------*/}
                 <div className="bg-slate-900 text-white p-8 rounded-2xl shadow-xl flex flex-col justify-between">
                     <div>
                         <p className="text-slate-400 font-bold uppercase text-xs tracking-widest">Total Valuation</p>

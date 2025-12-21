@@ -4,8 +4,7 @@ import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import api from '../../api/axios';
 
-// --- CONFIGURATION: HEC MIS STYLE HIERARCHY ---
-// Requirement: "Select from top (parent) up to the last (child)"
+
 const REGIONAL_HIERARCHY = {
     'KIGALI': {
         label: 'Kigali City',
@@ -63,25 +62,23 @@ export default function EditUser() {
             .then(res => {
                 setUser(res.data);
                 
-                // --- AUTO-DETECT PARENT ---
-                // If user has a location ID, find which Parent it belongs to.
+               
                 if (res.data.location) {
                     const existingLocId = res.data.location.id;
                     let foundParent = '';
                     
-                    // Search through our config to find the matching parent
+            
                     Object.entries(REGIONAL_HIERARCHY).forEach(([key, region]) => {
                         if (region.districts.some(d => d.id === existingLocId)) {
                             foundParent = key;
                         }
                     });
 
-                    // If we found where the ID belongs, set the Parent Dropdown
+                    
                     if (foundParent) {
                         setParentRegion(foundParent);
                     } else {
-                        // Safety: If ID exists in DB but not in our list (e.g. ID 99)
-                        // We leave Parent blank so the user is forced to re-select valid data.
+                        
                         setParentRegion('');
                     }
                 }
@@ -93,9 +90,7 @@ export default function EditUser() {
         const newParent = e.target.value;
         setParentRegion(newParent);
         
-        // --- LOGIC: RESET CHILD ---
-        // If Parent changes, the old Child ID is now invalid.
-        // We must clear it to force the user to pick a new, valid Child.
+    
         setUser(prev => ({ ...prev, location: null }));
     };
 
@@ -128,7 +123,7 @@ export default function EditUser() {
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                     
-                    {/* Standard Fields */}
+                    {/* ------------- */}
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-1">
                             <label className="text-xs font-bold text-gray-500 uppercase">First Name</label>
@@ -151,13 +146,13 @@ export default function EditUser() {
                         </div>
                     </div>
 
-                    {/* --- LOCATION SECTION (HEC MIS STYLE) --- */}
+                    {/* ------ */}
                     <div className="p-5 bg-blue-50 rounded-xl border border-blue-100 relative">
                         <h3 className="text-sm font-bold text-blue-900 mb-3 flex items-center gap-2">
                             <MapPin size={16}/> Regional Assignment
                         </h3>
                         
-                        {/* 1. Parent Select */}
+                       
                         <div className="mb-4">
                             <label className="text-[10px] font-bold text-blue-600 uppercase mb-1 block">1. Select Province</label>
                             <select 
@@ -172,7 +167,7 @@ export default function EditUser() {
                             </select>
                         </div>
 
-                        {/* 2. Child Select */}
+                        
                         <div className="relative">
                             <label className="text-[10px] font-bold text-blue-600 uppercase mb-1 block">2. Select District</label>
                             <select 
@@ -197,7 +192,7 @@ export default function EditUser() {
                             </div>
                         </div>
 
-                        {/* Explanation for Defense */}
+                        
                         <p className="text-[10px] text-blue-400 mt-3 flex items-start gap-1">
                             <AlertTriangle size={10} className="mt-0.5" /> 
                             <span>Note: Changing the Province automatically resets the District to ensure valid hierarchy.</span>

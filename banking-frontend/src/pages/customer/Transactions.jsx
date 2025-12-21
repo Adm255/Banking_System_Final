@@ -2,8 +2,7 @@ import { ArrowDownLeft, ArrowUpRight, Filter, Search } from 'lucide-react';
 import CustomerLayout from '../../layouts/CustomerLayout';
 
 export default function Transactions() {
-    // Mock data for the UI (Since we didn't build a full Transaction API yet)
-    // In a real app, you would use useEffect to fetch this from api.get('/transactions')
+    
     const transactions = [
         { id: 1, type: 'sent', name: 'Netflix Subscription', date: 'Oct 24, 2025', amount: 15.00, status: 'Completed' },
         { id: 2, type: 'received', name: 'Salary Deposit', date: 'Oct 23, 2025', amount: 2450.00, status: 'Completed' },
@@ -30,7 +29,7 @@ export default function Transactions() {
             </header>
 
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                {/* Search Bar inside table header */}
+                {/* ------------- */}
                 <div className="p-4 border-b border-gray-50">
                     <div className="relative w-64">
                         <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />

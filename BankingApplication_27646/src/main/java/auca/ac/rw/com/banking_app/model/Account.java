@@ -18,15 +18,14 @@ public class Account {
 
     private String accountNumber;
     private Double balance;
-    private String accountType; // SAVINGS or CURRENT
+    private String accountType;
 
-    // Linking back to User (Many Accounts -> One User)
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private User user;
 
-    // REQUIREMENT: One-to-One (One Account -> One Debit Card)
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     private Card card;
 }

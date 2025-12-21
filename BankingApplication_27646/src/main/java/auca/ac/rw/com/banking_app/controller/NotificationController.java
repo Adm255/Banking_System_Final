@@ -13,7 +13,6 @@ public class NotificationController {
     @Autowired
     private NotificationService notificationService;
 
-    // POST http://localhost:3000/api/notifications?userId=1
     @PostMapping
     public ResponseEntity<Notification> sendNotification(@RequestParam Long userId, @RequestBody String message) {
         return ResponseEntity.ok(notificationService.createNotification(userId, message));

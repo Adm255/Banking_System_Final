@@ -8,5 +8,5 @@ import lombok.Data;
 public class DashboardResponse {
     private long totalUsers;
     private long totalAccounts;
-    private double totalBalance; // Sum of all money in the bank
+    private double totalBalance;
 }
