@@ -1,16 +1,16 @@
-# 🏦 Online Banking System
+# Online Banking System
 
 A full-stack web application that simulates real-world banking operations such as account management, transactions, and secure user access.
 
 ---
 
-## 🚀 Overview
+## Overview
 
 This project was built to demonstrate how a modern banking system works by implementing core features like authentication, account management, and transaction processing.
 
 ---
 
-## ✨ Features
+## Features
 
 - User registration and login (authentication)
 - Role-based access (Admin / User)
@@ -23,7 +23,7 @@ This project was built to demonstrate how a modern banking system works by imple
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Backend
 - Java
@@ -45,23 +45,31 @@ This project was built to demonstrate how a modern banking system works by imple
 
 ---
 
-## 🧠 How It Works
+## How It Works
 
 The frontend sends requests to the backend using REST APIs.  
 The backend processes the business logic (authentication, transactions, validation) and stores data in the PostgreSQL database.
 
 ---
 
-## 💻 My Role
+## My Role
 
 I designed and developed the backend APIs, integrated the PostgreSQL database, and implemented core banking features such as account management and transactions. I also tested all endpoints using Postman and worked on connecting the frontend with the backend.
 
 ---
 
-## ⚙️ How to Run the Project
+## How to Run the Project
 
-### 🔧 Backend
+### Backend
 
 ```bash
 cd BankingApplication_27646
 mvn spring-boot:run
+
+
+### Frontend
+
+```bash
+cd banking-frontend
+npm install
+npm run dev
