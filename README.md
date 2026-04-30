@@ -58,19 +58,14 @@ I designed and developed the backend APIs, integrated the PostgreSQL database, a
 
 ---
 
-## How to Run the Project
-
-```md
-### Backend
+## ⚙️ How to Run the Project
 
 ```bash
+# Run Backend
 cd BankingApplication_27646
 mvn spring-boot:run
 
-```md
-### Frontent
-
-```bash
+# Run Frontend (open a new terminal)
 cd banking-frontend
 npm install
 npm run dev
