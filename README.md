@@ -60,8 +60,8 @@ I designed and developed the backend APIs, integrated the PostgreSQL database, a
 
 ## ⚙️ How to Run the Project
 
-### Backend
+### 🔧 Backend
 
 ```bash
-cd backend
+cd BankingApplication_27646
 mvn spring-boot:run
